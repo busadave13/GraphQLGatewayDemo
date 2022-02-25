@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IProductContractService, ProductContractService>();
 
 builder.Services.AddGraphQLServer()
-    //.AddType<UnsignedLongType>()
-    .AddQueryType<QueryType>()
+    .AddType<UnsignedLongType>()
+    .AddQueryType<Query>()
     .AddFiltering()
     .PublishSchemaDefinition(c => c
         .SetName("products"));

@@ -7,6 +7,14 @@
             descriptor
                 .Field(f => f.GetProductsAsync(CancellationToken.None))
                 .Type<ListType<ProductContractType>>();
+
+                descriptor
+                .Field(f => f.GetProductByIdAsync(default, CancellationToken.None))
+                .Type<ListType<ProductContractType>>();
+
+                descriptor
+                .Field(f => f.GetProductsByIdAsync(default, CancellationToken.None))
+                .Type<ListType<ProductContractType>>();
         }
     }
 }

@@ -19,5 +19,25 @@ namespace Products.Service
             cancellationToken.ThrowIfCancellationRequested();
             return await _service.GetAllProductsAsync();
         }
+
+        //[UsePaging(typeof(ProductContractType), MaxPageSize = 100, IncludeTotalCount = true)]
+        //[UseFiltering]
+        public async Task<IList<ProductContract>> GetProductsByIdAsync(string[] productIds, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var results = await _service.GetAllProductsAsync();
+            
+            //  Where(m => productIds.Contains(m.ProductId))/
+            var newlist = results.Where(m => productIds.Contains(m.ProductId)).ToList();
+
+            return newlist;
+        }
+
+        public async Task<ProductContract> GetProductByIdAsync(string productId, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var results = await _service.GetAllProductsAsync();
+            return results.FirstOrDefault(x => x.ProductId == productId);
+        }
     }
 }

@@ -16,5 +16,19 @@
             cancellationToken.ThrowIfCancellationRequested();
             return await _service.GetAllEntitlementsAsync();
         }
+
+        public async Task<IList<Entitlement>> GetEntitlementsByProductIdAsync(string[] productIds, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var results = await _service.GetAllEntitlementsAsync();            
+            return results.Where(m => productIds.Contains(m.ProductId)).ToList();
+        }
+
+        public async Task<Entitlement> GetEntitlementByProductIdAsync(string productId, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var results = await _service.GetAllEntitlementsAsync();
+            return results.FirstOrDefault(x => x.ProductId == productId);
+        }
     }
 }

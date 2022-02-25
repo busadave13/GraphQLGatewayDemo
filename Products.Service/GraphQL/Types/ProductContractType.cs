@@ -40,7 +40,7 @@ namespace Products.Service
             descriptor.Field(b => b.Categories).Type<ListType<StringType>>();
             descriptor.Field(b => b.Capabilities).Type<ListType<CapabilityType>>();
             descriptor.Field(b => b.IsDownloadable).Type<BooleanType>();
-            ///descriptor.Field(b => b.MaxInstallSize).Type<NonNullType<UnsignedLongType>>();
+            //descriptor.Field(b => b.MaxInstallSize).Type<NonNullType<UnsignedLongType>>();
             descriptor.Field(b => b.PackageCapabilities);
             descriptor.Field(b => b.Properties).Type<ProductPropertiesType>();
             descriptor.Field(b => b.RelatedProducts).UseFiltering();
